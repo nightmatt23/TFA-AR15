@@ -1,0 +1,27 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/weapons/tfa_night/ar15/stock_diff"
+	"$phongexponenttexture" "models/weapons/tfa_night/ar15/stock_gloss"
+	"$bumpmap" "models/weapons/tfa_night/ar15/stock_nrm"
+ 
+    	"$detail"				"detail\metal_detail_01"
+    	"$detailscale"			"2"
+    	"$detailblendfactor"          		"0.5"
+    	"$detailblendmode"          		"0"
+ 
+ 
+    	"$envmap"                   		"env_cubemap"
+    	"$envmaptint"              		"[ .03 .03 .03 ]"
+ 
+		"$phong"                    		"1"
+   	
+		"$phongboost"               		"50"
+		"$phongfresnelranges"       		"[0.25 0.5 1]"
+    	"$phongalbedotint"          		"1"
+    	"$phongalbedoboost"         		"48"
+ 
+		"$rimlight"                 		"1"
+		"$rimlightexponent"         		"80"   
+		"$rimlightboost"            		"1"
+		"$rimmask"                 		"1"
+}

@@ -1,0 +1,22 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/weapons/tfa_night/ar15/muzzle_diff"
+	"$phongexponenttexture" "models/weapons/tfa_night/ar15/muzzle_gloss"
+	"$bumpmap" "models/weapons/tfa_night/ar15/muzzle_nrm"
+	"$phongwarptexture"			"models\weapons\tfa_grovez\phongwarp_metal2"
+	"$color2" 					"[0.5 0.5 0.5]"	
+ 
+    "$envmap"                   	"env_cubemap"
+    "$envmaptint"                "[.1 .1 .1]"
+	"$envmapfresnel"				".25"
+ 
+	"$phong"                    		"1"
+	"$phongboost"               		"15"
+	"$phongfresnelranges"       		"[0.25 0.5 1]"
+    "$phongalbedotint"          		"1"
+ 
+	"$rimlight"                 		"1"
+	"$rimlightexponent"         		"40"   
+	"$rimlightboost"            		"1"
+	"$rimmask"                 			"1"
+}
