@@ -5,7 +5,9 @@ local pref = "TFA_NIGHT.AR15"
 TFA.AddSound(pref..".1", CHAN_AUTO, 1, 140, {99, 101}, path.."ar15_fire.wav", ")")
 TFA.AddSound(pref..".2", CHAN_AUTO, 1, 140, {99, 101}, path.."ar15_supp_fire.wav", ")")
 
-TFA.AddSound(pref..".BoltRelease", CHAN_AUTO, 1, 50, {99, 101}, path.."ar15_boltcatch.wav", ")")
+TFA.AddSound(pref..".BoltCatch", CHAN_AUTO, 1, 50, {99, 101}, path.."ar15_boltcatch.wav", ")")
+TFA.AddSound(pref..".BoltBack", CHAN_AUTO, 1, 50, {99, 101}, path.."ar15_boltback.wav", ")")
+TFA.AddSound(pref..".BoltForward", CHAN_AUTO, 1, 50, {99, 101}, path.."ar15_boltforward.wav", ")")
 
 TFA.AddSound(pref..".Draw", CHAN_AUTO, 1, 50, {99, 101}, path.."weap_in2.wav", ")")
 TFA.AddSound(pref..".DrawFast", CHAN_AUTO, 1, 50, {99, 101}, path.."weap_in1.wav", ")")

@@ -316,6 +316,7 @@ SWEP.SprintAnimation = {
 ----[[EVENT TABLE FUNCTIONS]]----
 
 function SWEP:AR15_Mag1_Update(vm)
+	local self2 = self:GetTable()
 	if self:Clip1() <= 1 then
 		self.Bodygroups_V[1] = 1
 	end
@@ -334,6 +335,17 @@ function SWEP:AR15_Auto(vm)
     end
 end
 
+function SWEP:AR15_Jopa(vm)
+	if SERVER then
+		if self:Clip1() > 0 then
+		self:SetClip1(self:Clip1() - 1)
+		end
+	end
+	if self:Clip1() > 0 then
+		self.MakeShell(self)
+	end
+end
+
 ----[[EVENT TABLE]]---
 
 SWEP.EventTable = {
@@ -341,12 +353,17 @@ SWEP.EventTable = {
 		{time = 0, type = "lua", value = function(wep, vm) wep:AR15_Mag1_Update() end},
 		{time = 0, type = "lua", value = function(wep, vm) wep:AR15_Auto() end},
 	},
+	["fix"] = {
+		{time = 4 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.BoltBack")},
+		{time = 0.40, type = "lua", value = function(wep, vm) wep:AR15_Jopa() end},
+		{time = 15 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.BoltForward")},
+	},
 	["fire"] = {
 		{time = 0, type = "lua", value = function(wep, vm) wep:AR15_Mag1_Update() end},
 	},
 	["ready"] = {
 		{time = 0, type = "lua", value = function(wep, vm) wep:AR15_Mag1_Full() end},
-		{time = 7 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.BoltRelease")},
+		{time = 7 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.BoltCatch")},
 		{time = 20 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.ReloadEndRattle")},
 		{time = 23 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.ReloadEndGrab")},
 		{time = 25 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.ReloadEndShoulder")}
@@ -384,7 +401,7 @@ SWEP.EventTable = {
 		{time = 35 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.MagInsert")},
 		{time = 40 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.MagIn")},
 		{time = 45 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.ReloadRattle2")},
-		{time = 58 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.BoltRelease")},
+		{time = 58 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.BoltCatch")},
 		{time = 73 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.ReloadEndRattle")},
 		{time = 76 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.ReloadEndGrab")},
 		{time = 86 / 30, type = "sound", value = Sound("TFA_NIGHT.AR15.ReloadEndShoulder")}
@@ -459,7 +476,7 @@ SWEP.VElements = {
 	----[[TOP_RAIL]]----
 	["flashlight_m300c_thorntail_black"] = {
 		type = "Model", 
-		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c/model.mdl", 
+		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c_thorntail/model.mdl",
 		bone = "tag_weapon", 
 		rel = "", 
 		pos = Vector(0, -0.3, 10), 
@@ -475,7 +492,7 @@ SWEP.VElements = {
 	},
 	["flashlight_m300c_thorntail_tan"] = {
 		type = "Model",
-		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c/model.mdl",
+		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c_thorntail/model.mdl",
 		bone = "tag_weapon",
 		rel = "",
 		pos = Vector(0, -0.3, 10), 
@@ -492,7 +509,7 @@ SWEP.VElements = {
 	----[[RIGHT_RAIL]]----
 	["flashlight_m300c_scout_black"] = {
 		type = "Model", 
-		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c/model.mdl", 
+		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c_scout/model.mdl",
 		bone = "tag_weapon", 
 		rel = "", 
 		pos = Vector(-1.35, 1.2, 17.5), 
@@ -508,7 +525,7 @@ SWEP.VElements = {
 	},
 		["flashlight_m300c_scout_tan"] = {
 		type = "Model",
-		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c/model.mdl",
+		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c_scout/model.mdl",
 		bone = "tag_weapon",
 		rel = "",
 		pos = Vector(-1.35, 1.2, 17.5), 
