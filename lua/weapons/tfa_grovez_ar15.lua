@@ -271,7 +271,7 @@ SWEP.TracerCount = 1 -- 0 disables, otherwise, 1 in X chance
 --Impact Effects
 SWEP.ImpactEffect = nil -- Impact Effect
 SWEP.ImpactDecal = nil -- Impact Decal
-----[[FLASHLIGHT]]----
+---[[FLASHLIGHT]]----
 SWEP.HasFlashlight = false
 SWEP.FlashlightAttachment = 0
 SWEP.FlashlightDistance = 0
@@ -280,6 +280,29 @@ SWEP.FlashlightFOV = 0
 SWEP.FlashlightSoundToggleOn = Sound("")
 SWEP.FlashlightSoundToggleOff = Sound("")
 SWEP.FlashlightMaterial = "effects/flashlight001"
+--Flashlight slot related
+SWEP.FlashlightSlot = 0
+SWEP.FlashlightSlot0Pos = Vector(0, 0, 0)
+SWEP.FlashlightSlot0Ang = Angle(0, 0, 0)
+SWEP.FlashlightSlot1Pos = Vector(-1.35, 0.15, 22)
+SWEP.FlashlightSlot1Ang = Angle(90, 0, -180)
+SWEP.FlashlightSlot2Pos = Vector(1.5, 0.2, 22)
+SWEP.FlashlightSlot2Ang = Angle(90, 0, 0)
+SWEP.FlashlightSlot3Pos = Vector(0.15, 1.6, 12.5)
+SWEP.FlashlightSlot3Ang = Angle(90, 0, -90)
+SWEP.FlashlightSlot4Pos = Vector(0.15, 1.6, 15)
+SWEP.FlashlightSlot4Ang = Angle(90, 0, -90)
+SWEP.FlashlightSlot5Pos = Vector(0.15, -1.35, 22)
+SWEP.FlashlightSlot5Ang = Angle(90, 0, 90)
+--Lightsource offset related
+SWEP.FlashlightLightsourcePos = Vector(0, 0, 0)
+SWEP.FlashlightLightsourceAng = Angle(0, 0, 0)
+SWEP.FlashlightLightsourcePos_M300CScout = Vector(-2.6, 0, 0.63)
+SWEP.FlashlightLightsourceAng_M300CScout = Angle(0, -90, 0)
+SWEP.FlashlightLightsourcePos_M300CThorntail = Vector(-5.3, -1.075, 0.29)
+SWEP.FlashlightLightsourceAng_M300CThorntail = Angle(0, -90, 0)
+----[[LASER]]----
+SWEP.LaserDistance = 10000
 ----[[LASER]]----
 --SWEP.LaserDistance = 10000
 ----[[MAG DROP]]----
@@ -316,7 +339,6 @@ SWEP.SprintAnimation = {
 ----[[EVENT TABLE FUNCTIONS]]----
 
 function SWEP:AR15_Mag1_Update(vm)
-	local self2 = self:GetTable()
 	if self:Clip1() <= 1 then
 		self.Bodygroups_V[1] = 1
 	end
@@ -335,7 +357,7 @@ function SWEP:AR15_Auto(vm)
     end
 end
 
-function SWEP:AR15_Jopa(vm)
+function SWEP:AR15_Jopa(vm) -- nightmatt's shitcode hell yeeeah!!!!!!!!!!!!!
 	if SERVER then
 		if self:Clip1() > 0 then
 		self:SetClip1(self:Clip1() - 1)
@@ -412,7 +434,10 @@ SWEP.ViewModelBoneMods = {
 	["ValveBiped.Bip01_L_Hand"] = { scale = Vector(1, 1, 1), pos = Vector(0.5, 0, 0.5), angle = Angle(0, 0, 0) },
 	["ValveBiped.Bip01_L_Finger02"] = { scale = Vector(1, 1, 1), pos = Vector(0, 0, 0), angle = Angle(10, 10, 0) },
 	["ValveBiped.Bip01_R_Finger12"] = { scale = Vector(1, 1, 1), pos = Vector(0, -0.15, -0.22), angle = Angle(25, -20, 0) },
-	["m16_flash"] = { scale = Vector(1, 1, 1), pos = Vector(0, -0.05, -0.5), angle = Angle(0, 0, 0) },
+	["muzzle"] = { scale = Vector(1, 1, 1), pos = Vector(0, -0.05, 0), angle = Angle(0, 0, 90) },
+	["shell"] = { scale = Vector(1, 1, 1), pos = Vector(0, -0.05, -0.5), angle = Angle(0, 90, 0) },
+	["tag_flashlight"] = { scale = Vector(1.5, 1.5, 1.5), pos = Vector(0, 0, 0), angle = Angle(0, 0, 0) },
+	["tag_flashlight_lightsource"] = {scale = Vector(1, 1, 1), pos = Vector(0, 0, 0), angle = Angle(0, 0, 0)}
 }
 
 ----[[AKIMBO]]----
@@ -423,7 +448,7 @@ SWEP.VElements = {
 	----[[SCOPES]]----
 	["scope_pk120"] = {
 		type = "Model", 
-		model = "models/weapons/tfa_grovez/mods/scopes/scope_pk120/model.mdl", 
+		model = "models/weapons/tfa_grovez/mods/scopes/scope_pk120/scope.mdl", 
 		bone = "tag_weapon", 
 		rel = "", 
 		pos = Vector(0, -0.3, 1), 
@@ -449,7 +474,7 @@ SWEP.VElements = {
 	},
 	["scope_uh1_gen2"] = {
 		type = "Model", 
-		model = "models/weapons/tfa_grovez/mods/scopes/scope_uh1_gen2/model.mdl", 
+		model = "models/weapons/tfa_grovez/mods/scopes/scope_uh1_gen2/scope.mdl", 
 		bone = "tag_weapon", 
 		rel = "", 
 		pos = Vector(0, -0.3, 1), 
@@ -473,79 +498,46 @@ SWEP.VElements = {
 		draw_func_outer = DrawSingleReticle(),
 		active = false
 	},
-	----[[TOP_RAIL]]----
-	["flashlight_m300c_thorntail_black"] = {
-		type = "Model", 
-		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c_thorntail/model.mdl",
-		bone = "tag_weapon", 
-		rel = "", 
-		pos = Vector(0, -0.3, 10), 
-		angle = Angle(-90, 90, 0), 
-		size = Vector(1.05, 1.05, 1.05), 
-		color = Color(255, 255, 255, 255), 
-		surpresslightning = false, 
-		material = "", 
-		skin = 0, 
-		bodygroup = {[0] = 1}, 
-		active = false, 
-		bonemerge = false
-	},
-	["flashlight_m300c_thorntail_tan"] = {
+	----[[TACTICAL]]----
+	["flashlight_m300c_scout"] = {
 		type = "Model",
-		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c_thorntail/model.mdl",
-		bone = "tag_weapon",
+		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c_scout/tactical.mdl",
+		bone = "tag_flashlight",
 		rel = "",
-		pos = Vector(0, -0.3, 10), 
-		angle = Angle(-90, 90, 0), 
-		size = Vector(1.05, 1.05, 1.05), 
-		color = Color(255, 255, 255, 255), 
+		pos = Vector(0, 0, 0),
+		angle = Angle(0, 0, 0),
+		size = Vector(1.1, 1.1, 1.1),
+		color = Color(255, 255, 255, 255),
 		surpresslightning = false,
 		material = "",
-		skin = 1,
-		bodygroup = {[0] = 1},
+		skin = 0,
+		bodygroup = {},
 		active = false,
 		bonemerge = false
 	},
-	----[[RIGHT_RAIL]]----
-	["flashlight_m300c_scout_black"] = {
-		type = "Model", 
-		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c_scout/model.mdl",
-		bone = "tag_weapon", 
-		rel = "", 
-		pos = Vector(-1.35, 1.2, 17.5), 
-		angle = Angle(-90, -180, 0), 
-		size = Vector(1.05, 1.05, 1.05), 
-		color = Color(255, 255, 255, 255), 
-		surpresslightning = false, 
-		material = "", 
-		skin = 0, 
-		bodygroup = {[0] = 0}, 
-		active = false, 
-		bonemerge = false
-	},
-		["flashlight_m300c_scout_tan"] = {
+	["flashlight_m300c_thorntail"] = {
 		type = "Model",
-		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c_scout/model.mdl",
-		bone = "tag_weapon",
+		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_surefire_m300c_thorntail/tactical.mdl",
+		bone = "tag_flashlight",
 		rel = "",
-		pos = Vector(-1.35, 1.2, 17.5), 
-		angle = Angle(-90, -180, 0), 
-		size = Vector(1.05, 1.05, 1.05), 
-		color = Color(255, 255, 255, 255), 
+		pos = Vector(0, 0, 0),
+		angle = Angle(0, 0, 0),
+		size = Vector(1.1, 1.1, 1.1),
+		color = Color(255, 255, 255, 255),
 		surpresslightning = false,
 		material = "",
-		skin = 1,
-		bodygroup = {[0] = 0},
+		skin = 0,
+		bodygroup = {},
 		active = false,
 		bonemerge = false
-	}
+	},
 }
 ----[[ATTACHMENTS]]----
 SWEP.Attachments = {
 	[1] = {atts = {"grovez_scope_pk120", "grovez_scope_uh1_gen2", "nightmatt_scope_anime"}}, -- Scope
 	[2] = {atts = {"nightmatt_suppressor_nt4"}}, -- Suppressor
-	[3] = {atts = {"grovez_flashlight_surefire_m300c_thorntail_black", "grovez_flashlight_surefire_m300c_thorntail_tan"}}, -- Top Rail
-	[4] = {atts = {"grovez_flashlight_surefire_m300c_scout_black", "grovez_flashlight_surefire_m300c_scout_tan"}}, -- Right Rail
+	[3] = {atts = {"grovez_flashlight_surefire_m300c_scout_black", "grovez_flashlight_surefire_m300c_scout_tan", "grovez_flashlight_surefire_m300c_thorntail_black", "grovez_flashlight_surefire_m300c_thorntail_tan"}},
+	[40] = {default = "grovez_ak12_flashlight_position_1", atts = {"grovez_ak12_flashlight_position_1", "grovez_ak12_flashlight_position_2", "grovez_ak12_flashlight_position_3", "grovez_ak12_flashlight_position_4", "grovez_ak12_flashlight_position_5"}},
 }
 SWEP.AttachmentDependencies = {}
 SWEP.AttachmentExclusions = {
@@ -569,3 +561,71 @@ SWEP.AttachmentIconOverride = {}
 
 
 DEFINE_BASECLASS(SWEP.Base)
+
+hook.Add("TFA_Attachment_Attached", "TFA_AK12_Attachment_Attached", function(wepom, attid, atttable, category, attindex, forced)
+	if atttable.ChangeFlashlightPosition == true then
+		if wepom.FlashlightSlot == 0 then
+			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot0Pos
+			wepom.ViewModelBoneMods["tag_flashlight"].angle = wepom.FlashlightSlot0Ang
+		end
+
+		if wepom.FlashlightSlot == 1 then
+			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot1Pos
+			wepom.ViewModelBoneMods["tag_flashlight"].angle = wepom.FlashlightSlot1Ang
+		end
+
+		if wepom.FlashlightSlot == 2 then
+			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot2Pos
+			wepom.ViewModelBoneMods["tag_flashlight"].angle = wepom.FlashlightSlot2Ang
+		end
+
+		if wepom.FlashlightSlot == 3 then
+			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot3Pos
+			wepom.ViewModelBoneMods["tag_flashlight"].angle = wepom.FlashlightSlot3Ang
+		end
+
+		if wepom.FlashlightSlot == 4 then
+			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot4Pos
+			wepom.ViewModelBoneMods["tag_flashlight"].angle = wepom.FlashlightSlot4Ang
+		end
+
+		if wepom.FlashlightSlot == 5 then
+			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot5Pos
+			wepom.ViewModelBoneMods["tag_flashlight"].angle = wepom.FlashlightSlot5Ang
+		end
+	end
+end)
+
+hook.Add("TFA_Attachment_Detached", "TFA_AK12_Attachment_Detached", function(wepom, attid, atttable, category, attindex, forced)
+	if atttable.ChangeFlashlightPosition == true then
+		if wepom.FlashlightSlot == 0 then
+			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot0Pos
+			wepom.ViewModelBoneMods["tag_flashlight"].angle = wepom.FlashlightSlot0Ang
+		end
+
+		if wepom.FlashlightSlot == 1 then
+			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot1Pos
+			wepom.ViewModelBoneMods["tag_flashlight"].angle = wepom.FlashlightSlot1Ang
+		end
+
+		if wepom.FlashlightSlot == 2 then
+			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot2Pos
+			wepom.ViewModelBoneMods["tag_flashlight"].angle = wepom.FlashlightSlot2Ang
+		end
+
+		if wepom.FlashlightSlot == 3 then
+			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot3Pos
+			wepom.ViewModelBoneMods["tag_flashlight"].angle = wepom.FlashlightSlot3Ang
+		end
+
+		if wepom.FlashlightSlot == 4 then
+			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot4Pos
+			wepom.ViewModelBoneMods["tag_flashlight"].angle = wepom.FlashlightSlot4Ang
+		end
+
+		if wepom.FlashlightSlot == 5 then
+			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot5Pos
+			wepom.ViewModelBoneMods["tag_flashlight"].angle = wepom.FlashlightSlot5Ang
+		end
+	end
+end)
