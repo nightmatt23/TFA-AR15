@@ -18,6 +18,9 @@ ATTACHMENT.WeaponTable = {
 	["Bodygroups_V"] = {
         [4] =  1
     },
+	["ViewModelBoneMods"] = {
+		["muzzle"] = {scale = Vector(1, 1, 1), pos = Vector(0.15, 0, 32.5), angle = Angle(0, 0, 90)}
+	},
 	["Primary"] = {
 		["KickUp"] = function(wep, stat) return stat * 0.9 end,
 		["KickDown"] = function(wep, stat) return stat * 0.9 end,
