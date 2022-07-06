@@ -206,6 +206,9 @@ SWEP.IronSightsAng = Vector(0, 0, -2)
 --Offsets
 SWEP.SightOffset_PK120 = Vector(-0.02, 0, -0.65)
 SWEP.SightOffset_UH1_GEN2 = Vector(0, 0, -0.37)
+SWEP.SightOffset_T2_Unity = Vector(0, 0, -1.18)
+SWEP.SightOffset_T2_Tall = Vector(0, 0, -0.37)
+SWEP.SightOffset_T2_Short = Vector(0, 0, 0.5)
 SWEP.WorldModel = "" -- Weapon world model path
 SWEP.Bodygroups_W = {}
 SWEP.HoldType = "ar2" -- "normal" "melee" "melee2" "fist" "knife" "smg" "ar2" "pistol" "rpg" "physgun" "grenade" "shotgun" "crossbow" "slam" "passive"
@@ -282,8 +285,8 @@ SWEP.FlashlightSoundToggleOff = Sound("")
 SWEP.FlashlightMaterial = "effects/flashlight001"
 --Flashlight slot related
 SWEP.FlashlightSlot = 0
-SWEP.FlashlightSlot0Pos = Vector(0, 0, 0)
-SWEP.FlashlightSlot0Ang = Angle(0, 0, 0)
+SWEP.FlashlightSlot0Pos = Vector(-1.3, 0.2, 22)
+SWEP.FlashlightSlot0Ang = Angle(90, 0, -180)
 SWEP.FlashlightSlot1Pos = Vector(-1.3, 0.2, 22)
 SWEP.FlashlightSlot1Ang = Angle(90, 0, -180)
 SWEP.FlashlightSlot2Pos = Vector(1.5, 0.2, 22)
@@ -292,7 +295,7 @@ SWEP.FlashlightSlot3Pos = Vector(0.15, 1.65, 12.5)
 SWEP.FlashlightSlot3Ang = Angle(90, 0, -90)
 SWEP.FlashlightSlot4Pos = Vector(0.15, 1.65, 15)
 SWEP.FlashlightSlot4Ang = Angle(90, 0, -90)
-SWEP.FlashlightSlot5Pos = Vector(0, -1.37, 22)
+SWEP.FlashlightSlot5Pos = Vector(0.1, -1.37, 22)
 SWEP.FlashlightSlot5Ang = Angle(90, 0, 90)
 --Lightsource offset related
 SWEP.FlashlightLightsourcePos = Vector(0, 0, 0)
@@ -492,6 +495,84 @@ SWEP.VElements = {
 		draw_func_outer = DrawSingleReticle(),
 		active = false
 	},
+		["scope_t2_unity"] = {
+		type = "Model",
+		model = "models/weapons/tfa_grovez/mods/scopes/scope_micro_t2_unity/scope.mdl",
+		bone = "tag_weapon",
+		rel = "",
+		pos = Vector(0, -0.25, 1),
+		angle = Angle(90, -90, 0),
+		size = Vector(1.3, 1.3, 1.3),
+		color = Color(255, 255, 255, 255),
+		surpresslightning = false,
+		material = "",
+		skin = 0,
+		bodygroup = {},
+		active = false,
+		bonemerge = false
+	},
+	["scope_t2_unity_lens"] = {
+		type = "Quad",
+		rel = "scope_t2_unity",
+		bone = "mod_scope_reticle",
+		pos = Vector(0, 5, 0),
+		angle = Angle(180, 0, -90),
+		size = 0.125,
+		draw_func_outer = DrawSingleReticle(),
+		active = false
+	},
+	["scope_t2_tall"] = {
+		type = "Model",
+		model = "models/weapons/tfa_grovez/mods/scopes/scope_micro_t2_tall/scope.mdl",
+		bone = "tag_weapon",
+		rel = "",
+		pos = Vector(0, -0.25, 1),
+		angle = Angle(90, -90, 0),
+		size = Vector(1.3, 1.3, 1.3),
+		color = Color(255, 255, 255, 255),
+		surpresslightning = false,
+		material = "",
+		skin = 0,
+		bodygroup = {},
+		active = false,
+		bonemerge = false
+	},
+	["scope_t2_tall_lens"] = {
+		type = "Quad",
+		rel = "scope_t2_tall",
+		bone = "mod_scope_reticle",
+		pos = Vector(0, 5, 0),
+		angle = Angle(180, 0, -90),
+		size = 0.125,
+		draw_func_outer = DrawSingleReticle(),
+		active = false
+	},
+	["scope_t2_short"] = {
+		type = "Model",
+		model = "models/weapons/tfa_grovez/mods/scopes/scope_micro_t2_short/scope.mdl",
+		bone = "tag_weapon",
+		rel = "",
+		pos = Vector(0, -0.25, 1),
+		angle = Angle(90, -90, 0),
+		size = Vector(1.3, 1.3, 1.3),
+		color = Color(255, 255, 255, 255),
+		surpresslightning = false,
+		material = "",
+		skin = 0,
+		bodygroup = {},
+		active = false,
+		bonemerge = false
+	},
+	["scope_t2_short_lens"] = {
+		type = "Quad",
+		rel = "scope_t2_short",
+		bone = "mod_scope_reticle",
+		pos = Vector(0, 5, 0),
+		angle = Angle(180, 0, -90),
+		size = 0.125,
+		draw_func_outer = DrawSingleReticle(),
+		active = false
+	},
 	----[[TACTICAL]]----
 	["flashlight_m300c_scout"] = {
 		type = "Model",
@@ -500,7 +581,7 @@ SWEP.VElements = {
 		rel = "",
 		pos = Vector(0, 0, 0),
 		angle = Angle(0, 0, 0),
-		size = Vector(1.2, 1.2, 1.2),
+		size = Vector(1.25, 1.25, 1.25),
 		color = Color(255, 255, 255, 255),
 		surpresslightning = false,
 		material = "",
@@ -516,7 +597,7 @@ SWEP.VElements = {
 		rel = "",
 		pos = Vector(0, 0, 0),
 		angle = Angle(0, 0, 0),
-		size = Vector(1.2, 1.2, 1.2),
+		size = Vector(1.25, 1.25, 1.25),
 		color = Color(255, 255, 255, 255),
 		surpresslightning = false,
 		material = "",
@@ -528,7 +609,7 @@ SWEP.VElements = {
 }
 ----[[ATTACHMENTS]]----
 SWEP.Attachments = {
-	[1] = {atts = {"grovez_scope_pk120", "grovez_scope_uh1_gen2", "nightmatt_scope_anime"}}, -- Scope
+	[1] = {atts = {"grovez_scope_pk120", "grovez_scope_uh1_gen2", "grovez_scope_t2_unity_black", "grovez_scope_t2_unity_tan", "grovez_scope_t2_tall", "grovez_scope_t2_short", "nightmatt_scope_anime"}}, -- Scope
 	[2] = {atts = {"nightmatt_suppressor_nt4"}}, -- Suppressor
 	[3] = {atts = {"grovez_flashlight_surefire_m300c_scout_black", "grovez_flashlight_surefire_m300c_scout_tan", "grovez_flashlight_surefire_m300c_thorntail_black", "grovez_flashlight_surefire_m300c_thorntail_tan"}},
 	[40] = {default = "grovez_ak12_flashlight_position_1", atts = {"grovez_ak12_flashlight_position_1", "grovez_ak12_flashlight_position_2", "grovez_ak12_flashlight_position_3", "grovez_ak12_flashlight_position_4", "grovez_ak12_flashlight_position_5"}},
@@ -540,6 +621,26 @@ SWEP.AttachmentExclusions = {
 }
 SWEP.AttachmentTableOverride = {
     ["grovez_scope_uh1_gen2"] = {
+		["Bodygroups_V"] = {
+            [2] =  2
+    }
+},
+    ["grovez_scope_t2_short"] = {
+		["Bodygroups_V"] = {
+            [2] =  2
+    }
+},
+    ["grovez_scope_t2_tall"] = {
+		["Bodygroups_V"] = {
+            [2] =  2
+    }
+},
+    ["grovez_scope_t2_unity_black"] = {
+		["Bodygroups_V"] = {
+            [2] =  2
+    }
+},
+    ["grovez_scope_t2_unity_tan"] = {
 		["Bodygroups_V"] = {
             [2] =  2
     }
