@@ -4,11 +4,11 @@ end
 
 ATTACHMENT.Name = "KAC QDSS NT-4 5.56x45 silencer"
 ATTACHMENT.ShortName = "NT4"
-ATTACHMENT.Icon = "entities/anime.png"
+ATTACHMENT.Icon = "entities/supp.png"
 ATTACHMENT.Description = {
 	Color(50, 255, 50), "[+] Makes the fire sound quiet",
 	Color(50, 255, 50), "[+] Hides the muzzle flash",
-	Color(50, 255, 50), "[+] Recoil control: -10%",
+	Color(255, 50, 50), "[-] Recoil control: +10%",
 	Color(255, 50, 50), "[-] Ergonomics: -21",
 	Color(255, 255, 255), "[=] Weight: +0.75"
 }

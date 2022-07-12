@@ -169,8 +169,8 @@ SWEP.ViewModelFOV = 70 -- This controls how big the viewmodel looks.  Less is mo
 SWEP.ViewModelFlip = false -- Set this to true for CSS models, or false for everything else
 SWEP.UseHands = true -- Use gmod c_arms system
 --Position
-SWEP.VMPos = Vector(0.538, 0.5, -0.759)
-SWEP.VMAng = Vector(0, 0, -5)
+SWEP.VMPos = Vector(0.538, -0.247, -0.759)
+SWEP.VMAng = Vector(0, 0, 0)
 --Position when sprinting
 SWEP.RunSightsPos = Vector(0, 0, 0)
 SWEP.RunSightsAng = Vector(0, 0, 0)
@@ -186,6 +186,8 @@ SWEP.InspectAng = Vector(47.527, 50.993, 56.782)
 --Safety position
 SWEP.SafetyPos = Vector(2.522, -1.721, -3.036)
 SWEP.SafetyAng = Vector(-14.344, 37.99, -33.807)
+
+
 --Nearwall offset
 SWEP.NearWallPos = Vector(0.091287083923817, -0.4564354121685, -0.18257416784763)
 SWEP.NearWallPosADS = Vector(SWEP.NearWallPos.x * 0.2, SWEP.NearWallPos.y * 0.5, SWEP.NearWallPos.z * 0.3)
@@ -202,13 +204,13 @@ SWEP.ToCrouchTime = 0.3
 SWEP.Secondary.IronFOV = 80 -- View FOV
 SWEP.IronViewModelFOV = 65 -- Viewmodel FOV
 SWEP.IronSightsPos = Vector(-2.7, -1.5, 0.9)
-SWEP.IronSightsAng = Vector(0, 0, -2)
+SWEP.IronSightsAng = Vector(0, 0, 0)
 --Offsets
-SWEP.SightOffset_PK120 = Vector(-0.02, 0, -0.65)
-SWEP.SightOffset_UH1_GEN2 = Vector(0, 0, -0.37)
-SWEP.SightOffset_T2_Unity = Vector(0, 0, -1.18)
-SWEP.SightOffset_T2_Tall = Vector(0, 0, -0.37)
-SWEP.SightOffset_T2_Short = Vector(0, 0, 0.5)
+SWEP.SightOffset_PK120 = Vector(-0.03, 0, -0.65)
+SWEP.SightOffset_UH1_GEN2 = Vector(-0.03, 0, -0.37)
+SWEP.SightOffset_T2_Unity = Vector(-0.03, 0, -1.18)
+SWEP.SightOffset_T2_Tall = Vector(-0.03, 0, -0.37)
+SWEP.SightOffset_T2_Short = Vector(-0.03, 0, 0.5)
 SWEP.WorldModel = "" -- Weapon world model path
 SWEP.Bodygroups_W = {}
 SWEP.HoldType = "ar2" -- "normal" "melee" "melee2" "fist" "knife" "smg" "ar2" "pistol" "rpg" "physgun" "grenade" "shotgun" "crossbow" "slam" "passive"
@@ -321,7 +323,7 @@ SWEP.MagBodygroups = "000"
 SWEP.MagSkin = 0
 SWEP.MagDropSrcForward = 11
 SWEP.MagDropSrcRight = 4
-SWEP.MagDropSrcUp = -13
+SWEP.MagDropSrcUp = -15
 SWEP.MagDropAng = Angle(-5, 0, 0)
 SWEP.MagYeetVelocityForward = 25
 SWEP.MagYeetVelocityRight = 0
@@ -615,10 +617,7 @@ SWEP.Attachments = {
 	[40] = {default = "grovez_ak12_flashlight_position_1", atts = {"grovez_ak12_flashlight_position_1", "grovez_ak12_flashlight_position_2", "grovez_ak12_flashlight_position_3", "grovez_ak12_flashlight_position_4", "grovez_ak12_flashlight_position_5"}},
 }
 SWEP.AttachmentDependencies = {}
-SWEP.AttachmentExclusions = {
-	["grovez_flashlight_surefire_m300c_thorntail_black"] = {"grovez_flashlight_surefire_m300c_scout_black", "grovez_flashlight_surefire_m300c_scout_tan"},
-	["grovez_flashlight_surefire_m300c_thorntail_tan"] = {"grovez_flashlight_surefire_m300c_scout_black", "grovez_flashlight_surefire_m300c_scout_tan"},
-}
+SWEP.AttachmentExclusions = {}
 SWEP.AttachmentTableOverride = {
     ["grovez_scope_uh1_gen2"] = {
 		["Bodygroups_V"] = {
