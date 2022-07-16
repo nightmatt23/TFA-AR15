@@ -351,7 +351,7 @@ function SWEP:AR15_Mag1_Full(vm)
 	self.Bodygroups_V[1] = 0
 end
 
-function SWEP:AR15_Firemode(vm)
+function SWEP:AR15_Firemode(vm) -- visual firemode
 	local Firemode = self:GetFireMode()
 	if Firemode == 1 then
 		self.Bodygroups_V[3] = 0
@@ -360,7 +360,7 @@ function SWEP:AR15_Firemode(vm)
     end
 end
 
-function SWEP:AR15_Jopa(vm) -- nightmatt's shitcode hell yeeeah!!!!!!!!!!!!!
+function SWEP:AR15_Jopa(vm) -- just press inspect button
 	if SERVER then
 		if self:Clip1() > 0 then
 		self:SetClip1(self:Clip1() - 1)
