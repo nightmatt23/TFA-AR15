@@ -656,7 +656,7 @@ SWEP.AttachmentIconOverride = {}
 
 DEFINE_BASECLASS(SWEP.Base)
 
-hook.Add("TFA_Attachment_Attached", "TFA_AK12_Attachment_Attached", function(wepom, attid, atttable, category, attindex, forced)
+hook.Add("TFA_Attachment_Attached", "TFA_AR15_Attachment_Attached", function(wepom, attid, atttable, category, attindex, forced)
 	if atttable.ChangeFlashlightPosition == true then
 		if wepom.FlashlightSlot == 0 then
 			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot0Pos
@@ -690,7 +690,7 @@ hook.Add("TFA_Attachment_Attached", "TFA_AK12_Attachment_Attached", function(wep
 	end
 end)
 
-hook.Add("TFA_Attachment_Detached", "TFA_AK12_Attachment_Detached", function(wepom, attid, atttable, category, attindex, forced)
+hook.Add("TFA_Attachment_Detached", "TFA_AR15_Attachment_Detached", function(wepom, attid, atttable, category, attindex, forced)
 	if atttable.ChangeFlashlightPosition == true then
 		if wepom.FlashlightSlot == 0 then
 			wepom.ViewModelBoneMods["tag_flashlight"].pos = wepom.FlashlightSlot0Pos
