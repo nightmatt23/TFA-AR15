@@ -291,7 +291,7 @@ SWEP.FlashlightSlot0Pos = Vector(-1.3, 0.2, 22)
 SWEP.FlashlightSlot0Ang = Angle(90, 0, -180)
 SWEP.FlashlightSlot1Pos = Vector(-1.3, 0.2, 22)
 SWEP.FlashlightSlot1Ang = Angle(90, 0, -180)
-SWEP.FlashlightSlot2Pos = Vector(1.5, 0.2, 22)
+SWEP.FlashlightSlot2Pos = Vector(1.55, 0.2, 22)
 SWEP.FlashlightSlot2Ang = Angle(90, 0, 0)
 SWEP.FlashlightSlot3Pos = Vector(0.15, 1.65, 12.5)
 SWEP.FlashlightSlot3Ang = Angle(90, 0, -90)
@@ -306,6 +306,8 @@ SWEP.FlashlightLightsourcePos_M300CScout = Vector(-2.6, 0, 0.63)
 SWEP.FlashlightLightsourceAng_M300CScout = Angle(0, -90, 0)
 SWEP.FlashlightLightsourcePos_M300CThorntail = Vector(-5.3, -1.075, 0.29)
 SWEP.FlashlightLightsourceAng_M300CThorntail = Angle(0, -90, 0)
+SWEP.FlashlightLightsourcePos_APLc = Vector(-1.3, 0, 0.63)
+SWEP.FlashlightLightsourceAng_APLc = Angle(0, -90, 0)
 ----[[LASER]]----
 SWEP.LaserDistance = 10000
 ----[[MAG DROP]]----
@@ -608,12 +610,28 @@ SWEP.VElements = {
 		active = false,
 		bonemerge = false
 	},
+	["flashlight_aplc"] = {
+		type = "Model",
+		model = "models/weapons/tfa_grovez/mods/tactical/flashlight_inforce_wild1/tactical.mdl",
+		bone = "tag_flashlight",
+		rel = "",
+		pos = Vector(0, 0, 0),
+		angle = Angle(0, 0, 0),
+		size = Vector(1.25, 1.25, 1.25),
+		color = Color(255, 255, 255, 255),
+		surpresslightning = false,
+		material = "",
+		skin = 0,
+		bodygroup = {},
+		active = false,
+		bonemerge = false
+	},
 }
 ----[[ATTACHMENTS]]----
 SWEP.Attachments = {
 	[1] = {atts = {"grovez_scope_pk120", "grovez_scope_uh1_gen2", "grovez_scope_t2_unity_black", "grovez_scope_t2_unity_tan", "grovez_scope_t2_tall", "grovez_scope_t2_short", "nightmatt_scope_anime"}}, -- Scope
 	[2] = {atts = {"nightmatt_suppressor_nt4"}}, -- Suppressor
-	[3] = {atts = {"grovez_flashlight_surefire_m300c_scout_black", "grovez_flashlight_surefire_m300c_scout_tan", "grovez_flashlight_surefire_m300c_thorntail_black", "grovez_flashlight_surefire_m300c_thorntail_tan"}},
+	[3] = {atts = {"grovez_flashlight_surefire_m300c_scout_black", "grovez_flashlight_surefire_m300c_scout_tan", "grovez_flashlight_surefire_m300c_thorntail_black", "grovez_flashlight_surefire_m300c_thorntail_tan", "grovez_flashlight_inforce_wild1"}},
 	[40] = {default = "grovez_ak12_flashlight_position_1", atts = {"grovez_ak12_flashlight_position_1", "grovez_ak12_flashlight_position_2", "grovez_ak12_flashlight_position_3", "grovez_ak12_flashlight_position_4", "grovez_ak12_flashlight_position_5"}},
 }
 SWEP.AttachmentDependencies = {}
