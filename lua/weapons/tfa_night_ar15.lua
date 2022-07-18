@@ -285,6 +285,7 @@ SWEP.FlashlightFOV = 0
 SWEP.FlashlightSoundToggleOn = Sound("")
 SWEP.FlashlightSoundToggleOff = Sound("")
 SWEP.FlashlightMaterial = "effects/flashlight001"
+SWEP.UseModSwitchProceduralAnimation = true
 --Flashlight slot related
 SWEP.FlashlightSlot = 0
 SWEP.FlashlightSlot0Pos = Vector(-1.3, 0.2, 22)
